@@ -1,0 +1,56 @@
+      0 - R0 constantly sends 11b (3d) to D
+  38172 - 1b arrives at R0 write (rolly irrelevant)
+  39274 - FF in outer write wire about to turn down and collide
+
+  39286 - 101b (5d) arrives at R0 write
+          causes 1b at D and FF in W
+  41700 - "reset" pulse arrives in "master reset" wire
+          causes 1111111111 (10 bits) to all LCDs in both wires
+  44762 - 4 pulses generated at "multiplexer write" wire, 8 clock ticks apart (48 gens)
+  45146 - 5th pulse generated. 32 ticks apart (192 gens) from where it *should* be
+ 143000 - 5-0-7
+ 397000 - 7-0-11
+ 630000 - 11-0-13
+
+1470000 - 19
+2000000 - 23
+
+
+Timings
+Master Clock -1 = Bus Clock 0 = PC 0 = LCD clock 4
+
+New PC
+   1444 - PC incremented to 01b
+   3748 - PC incremented to 11b
+   4700 - FF in W
+   7142 - "reset" pulse arrives in "master reset" wire corner
+          causes 1111111111 (10 bits) to all LCDs in both wires
+   7167 - reset pulse about to enter floder. LCD clocks at 3
+   7276 - flood about to enter center + of LSD LCD counter wire (clock at 4)
+   7284 - flood about to enter center + of LSD LCD reset wire (8 gens later)
+          in LCD 3 and 4, this happens only 2 gens later
+          (LCD clock at 0)
+   7400 - reset flood to LCDs
+
+
+  11423 - 2
+
+LDC Increment (from pulse to full display update): ~40 cycles (240 gens)
+
+   7800 -  first reset (happens around 3000 gens before every prime)
+  11000 -  2
+  38000 -  3
+ 107000 -  5
+ 270000 -  7
+ 470000 - 11
+ 730000 - 13
+1067000 - 17
+1610000 - 19
+2170000 - 23
+3170000 - 29
+3880000 - 31
+5250000 - 37
+
+Benchmark:
+AMD Phenom II x4 955 (3.2GHz), Golly v2.3, 8^4 scale - in exactly 1 minute,
+prime 131 just showed up, 70M generations
