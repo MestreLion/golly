@@ -18,6 +18,13 @@
 
 Timings
 Master Clock -1 = Bus Clock 0 = PC 0 = LCD clock 4
+Master Clock:
+	6 cycles (36 gens)
+	READ:  master clock x 32 = 192 cycles (1152 gens) for a each read  pulse
+	WRITE: master clock x 64 = 384 cycles (2304 gens) for a each write pulse
+
+
+NEW PC TIMINGS
 
 New PC
    1444 - PC incremented to 01b
@@ -34,6 +41,8 @@ New PC
 
 
   11423 - 2
+
+
 
 LDC Increment (from pulse to full display update): ~40 cycles (240 gens)
 
@@ -53,4 +62,4 @@ LDC Increment (from pulse to full display update): ~40 cycles (240 gens)
 
 Benchmark:
 AMD Phenom II x4 955 (3.2GHz), Golly v2.3, 8^4 scale - in exactly 1 minute,
-prime 131 just showed up, 70M generations
+prime 131 just showed up, ~70M generations
